@@ -36,7 +36,7 @@ pipeline {
         stage ('get source file') {
             steps {
                 sh "mv /home/jenkins/uploaded_creatives/* ${workspace}/creative.zip"
-                sh "chown -R ${workspace}/creative.zip jenkins" 
+                sh "chown -R jenkins ${workspace}/creative.zip" 
             }
         }
         
