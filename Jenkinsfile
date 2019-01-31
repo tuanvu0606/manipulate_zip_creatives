@@ -32,7 +32,7 @@ pipeline {
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 
-        file(name: "FILE", description: "Choose a file to upload")
+        file(name: "creative.zip", description: "Choose a file to upload")
     }
     environment {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
