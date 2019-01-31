@@ -34,9 +34,10 @@ pipeline {
                 sh "chmod +x -R ./js_modify.py"                
             }
         }  
-        stage ('upload_creative_file') {
+        stage ('get source file') {
             steps {
-                build job: 'upload_file'                
+                sh "mv /home/ec2-user/upload_creatives/* ${workspace}/creative.zip"
+                sh "chown -R ${workspace}/creative.zip jenkins" 
             }
         }
         
