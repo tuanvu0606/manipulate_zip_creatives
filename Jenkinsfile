@@ -35,7 +35,7 @@ pipeline {
         }  
         stage ('get source file') {
             steps {
-                sh "mv /home/ec2-user/upload_creatives/* ${workspace}/creative.zip"
+                sh "cp /home/ec2-user/upload_creatives/* ${workspace}/creative.zip"
                 sh "chown -R ${workspace}/creative.zip jenkins" 
             }
         }
