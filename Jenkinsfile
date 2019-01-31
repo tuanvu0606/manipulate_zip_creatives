@@ -9,10 +9,16 @@ def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 //deleteDir()
 //step([$class: 'WsCleanup'])
 
+library "JENKINS-27413-workaround-library"
+
+def file_in_workspace = unstashParam "file"
+sh "cat ${file_in_workspace}"
+
+
 pipeline {
     agent any 
     parameters {
-        file(name: "FILE", description: "Choose a file to upload")
+        
     }
     environment {
         PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
@@ -33,12 +39,12 @@ pipeline {
                 sh "chmod +x -R ./js_modify.py"                
             }
         }  
-        stage("upload") {
+        stage ('upload_creative_file') {
             steps {
-                sh "ls -a"
+                build job: 'upload_file'                
             }
+        }
         
-        }              
     }
           
 }
