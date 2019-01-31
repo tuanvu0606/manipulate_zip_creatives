@@ -18,7 +18,7 @@ sh "cat ${file_in_workspace}"
 pipeline {
     agent any 
     parameters {
-        
+        string(name: 'HTML_BANNER_LINK', defaultValue: 'nope')
     }
     environment {
         PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
