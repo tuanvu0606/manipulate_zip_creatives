@@ -12,7 +12,7 @@ def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 pipeline {
     agent any 
     parameters {
-        file(name: "creative.zip", description: "Choose a file to upload")
+        file(name: "FILE", description: "Choose a file to upload")
     }
     environment {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
@@ -20,6 +20,9 @@ pipeline {
     stages {        
         stage('Install all dependencies') { 
             steps {             
+                wrap([$delegate: parameters.FILE]) {
+                    sh 'cat FILE'
+                }
                 //step([$class: 'WsCleanup'])         
                 println formatted_now          
                 //sh "pip install awscli --upgrade --user"
