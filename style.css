@@ -1,0 +1,31 @@
+#ab{
+position: absolute;
+top: 200px;
+width:320px;
+font-size: 90%;
+text-align:center;
+}
+h3{
+  margin:0px;
+}
+@font-face {
+  font-family: Lato;
+  src: url("https://s3-ap-southeast-1.amazonaws.com/banners.yoose.com/fonts/Lato-Bold.ttf");
+}
+
+h3 {
+  font-family: Lato;
+  color: white;
+  animation: blinker 1s linear infinite;
+  font-size: 90%;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+
+.from_to{
+  color: red;
+}
+}
