@@ -20,9 +20,7 @@ pipeline {
     stages {        
         stage('Install all dependencies') { 
             steps {             
-                wrap([$delegate: parameters.FILE]) {
-                    sh 'cat FILE'
-                }
+                sh 'cat FILE'
                 //step([$class: 'WsCleanup'])         
                 println formatted_now          
                 //sh "pip install awscli --upgrade --user"
