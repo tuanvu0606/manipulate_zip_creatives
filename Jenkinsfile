@@ -31,7 +31,13 @@ pipeline {
                 sh "chmod +x -R ./css_utils_parsing.py"
                 sh "chmod +x -R ./js_modify.py"                
             }
-        }        
+        }  
+        stage("upload") {
+            steps {
+                sh "ls -a"
+            }
+        
+        }      
         stage('Parsing HTML') { 
             steps {                
                 println exported_pool
