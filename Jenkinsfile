@@ -36,8 +36,10 @@ pipeline {
         stage ('get source file') {
             steps {
                 sh "rm -rf ${workspace}/*.zip"
-                sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative.zip"
-                sh "chown -R jenkins ${workspace}/creative.zip" 
+                sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative/creative.zip"
+                sh "chown -R jenkins ${workspace}/creative/creative.zip" 
+                sh "unzip ${workspace}/creative/creative.zip"
+                sh "rm -rf ${workspace}/creative/*.zip"
             }
         }
         
