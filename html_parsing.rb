@@ -4,15 +4,17 @@ require 'nokogiri'
 require 'open-uri'
 require 'fileutils'
    
-# PAGE_URL = ARGV[0].to_s
+CAMPAIGN = ARGV[0].to_s
 
-IMG_URL = ARGV[1].to_s
+WIDTH = ARGV[1].to_s
 
-JAVASCRIPT_URL = ARGV[2].to_s
+HEIGHT = ARGV[2].to_s
 
 CSS_URL = ARGV[3].to_s
 
 VERSION = ARGV[4].to_s
+
+
 
 combined_style = ""
 
@@ -88,15 +90,15 @@ script = page.css('script')
 image = page.css('gwd-image')
 
 link.each do |link|
-	link["src"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/twix-nigra/twix-nigra-local-320x50/" + link["src"].to_s
+	link["src"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/" + CAMPAIGN.to_s + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + link["src"].to_s
 end
 
 script.each do |script|
-	script["src"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/twix-nigra/twix-nigra-local-320x50/" + script["src"].to_s
+	script["src"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/" + CAMPAIGN + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + script["src"].to_s
 end
 
 image.each do |image|
-	image["source"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/twix-nigra/twix-nigra-local-320x50/" + image["source"].to_s
+	image["source"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/" + CAMPAIGN + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + image["source"].to_s
 end
 
 #save the page to result file

@@ -13,7 +13,11 @@ def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 pipeline {
     agent any 
     parameters {
-        string(name: 'HTML_BANNER_LINK', defaultValue: 'nope')
+        choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha'], description: 'input campaign name')
+
+        choice(name: 'WIDTH', choices: ['300', '320', '480', '728'], description: 'input campaign name')
+
+        choice(name: 'HEIGHT', choices: ['50','90', '100','250','320','480'], description: 'input campaign name')
     }
     environment {
         PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
@@ -42,8 +46,37 @@ pipeline {
                 sh "rm -rf ${workspace}/creative/*.zip"
             }
         }
+
+        stage ('manipulate HTML') {
+            steps {
+                sh "rm -rf ${workspace}/*.zip"
+                sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative/creative.zip"
+                sh "chown -R jenkins ${workspace}/creative/creative.zip" 
+                sh "unzip ${workspace}/creative/creative.zip"
+                sh "rm -rf ${workspace}/creative/*.zip"
+            }
+        }
+
+        stage ('copy to creative folder, prepare to push') {
+            steps {
+                sh "mv ${workspace}/fucntion*.js ${workspace}/creative/"
+                sh "mv ${workspace}/style*.js ${workspace}/creative/"                
+            }
+        }
         
     }
+        post {
+        always {
+            archiveArtifacts artifacts: '${workspace}/creative/*.html', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '${workspace}/creative/*.css', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '${workspace}/creative/*.js', onlyIfSuccessful: true
+        }
+        success {            
+            sh "echo /var/lib/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive"
+            step([$class: 'WsCleanup'])
+            }       
+        }            
+    }
           
-}
+
 
