@@ -33,7 +33,7 @@ pipeline {
 
                 //sh "gem install fileutils"
                 //sh "gem install nokogiri"
-                //sh "gem install open-uri"
+                sh "gem install open-uri"
 
 
                 sh "which ruby"
