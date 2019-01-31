@@ -31,10 +31,10 @@ pipeline {
                 //sh "gem install google_places"
                 //check ruby version
 
-                sh "gem install fileutils"
-                sh "gem install nokogiri"
-                sh "gem install open-uri"
-                
+                //sh "gem install fileutils"
+                //sh "gem install nokogiri"
+                //sh "gem install open-uri"
+
 
                 sh "which ruby"
                 sh "which gem"
