@@ -40,6 +40,7 @@ pipeline {
         stage ('get source file') {
             steps {
                 sh "rm -rf ${workspace}/*.zip"
+                sh "rm -rf ${workspace}/creative/*.*"
                 sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative/creative.zip"
                 sh "chown -R jenkins ${workspace}/creative/creative.zip" 
                 sh "unzip ${workspace}/creative/creative.zip"
@@ -49,16 +50,12 @@ pipeline {
 
         stage ('manipulate HTML') {
             steps {
-                sh "rm -rf ${workspace}/*.zip"
-                sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative/creative.zip"
-                sh "chown -R jenkins ${workspace}/creative/creative.zip" 
-                sh "unzip ${workspace}/creative/creative.zip"
-                sh "rm -rf ${workspace}/creative/*.zip"
+                sh """ruby ${workspace}/html_parsing.rb ${params.CAMPAIGN} ${params.WIDTH} ${params.HEIGHT}"""
             }
         }
 
         stage ('copy to creative folder, prepare to push') {
-            steps {
+            steps {                
                 sh "mv ${workspace}/fucntion*.js ${workspace}/creative/"
                 sh "mv ${workspace}/style*.js ${workspace}/creative/"                
             }
