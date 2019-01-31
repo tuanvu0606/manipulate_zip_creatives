@@ -30,6 +30,12 @@ pipeline {
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
                 //check ruby version
+
+                sh "gem install fileutils"
+                sh "gem install nokogiri"
+                sh "gem install open-uri"
+                
+
                 sh "which ruby"
                 sh "which gem"
                 sh "chmod +x -R ./html_parsing.rb"  
