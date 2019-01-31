@@ -15,7 +15,7 @@ pipeline {
         file(name: "FILE", description: "Choose a file to upload")
     }
     environment {
-    PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
+        PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
     }
     stages {        
         stage('Install all dependencies') { 
