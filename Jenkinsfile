@@ -9,11 +9,6 @@ def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 //deleteDir()
 //step([$class: 'WsCleanup'])
 
-library "JENKINS-27413-workaround-library"
-
-def file_in_workspace = unstashParam "file"
-sh "cat ${file_in_workspace}"
-
 
 pipeline {
     agent any 
