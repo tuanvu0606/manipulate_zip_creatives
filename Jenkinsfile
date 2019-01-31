@@ -37,36 +37,7 @@ pipeline {
                 sh "ls -a"
             }
         
-        }      
-        stage('Parsing HTML') { 
-            steps {                
-                println exported_pool
-
-                //parse html, change HTML and image source files url                
-                sh """ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${exported_pool}/${params.CAMPAIGN}/${BUILD_NUMBER}/newprefs.js ${exported_pool}/${params.CAMPAIGN}/${BUILD_NUMBER}/style_new.css ${formatted_now}"""
-
-                //sh "echo $JOB_NAME"
-                //sh "echo $BUILD_TAG"
-                //sh "echo ${workspace}"
-            }
-        }
-        stage('Parsing CSS') { 
-            steps {                
-                //parse css by css utils
-                sh "python ${workspace}/css_utils_parsing.py ${params.STORE_COLOR} ${params.DISTANCE_FROM_TOP_TO_FLASHING_TEXT} ${params.WIDTH_OF_TEXT}"                
-            }
-        }
-        stage('Parsing Java Scripts') { 
-            steps {
-                //parse javascript, change color from from_to characters.
-                sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
-            }
-        }
-        stage('Compress HTML') { 
-            steps {
-                echo 'test'
-            }
-        }        
+        }              
     }
     post {
         always {
