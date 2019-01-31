@@ -22,7 +22,7 @@ pipeline {
         stage('Install all dependencies') { 
             steps {             
                 //step([$class: 'WsCleanup'])         
-                println formatted_now          
+                println formatted_now                          
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
                 //check ruby version
@@ -35,7 +35,7 @@ pipeline {
         }  
         stage ('get source file') {
             steps {
-                sh "cp /home/ec2-user/upload_creatives/* ${workspace}/creative.zip"
+                sh "mv /home/jenkins/uploaded_creatives/* ${workspace}/creative.zip"
                 sh "chown -R ${workspace}/creative.zip jenkins" 
             }
         }
