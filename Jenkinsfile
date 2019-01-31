@@ -32,7 +32,7 @@ pipeline {
                 //check ruby version
 
                 //sh "gem install fileutils"
-                //sh "gem install nokogiri"
+                sh "gem install nokogiri"
                 //sh "gem install open-uri"
 
 
