@@ -83,6 +83,7 @@ pipeline {
         }
         success {            
             sh "echo /var/lib/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive"
+            sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive/creative s3://tuan.vu.yoose/${params.CAMPAIGN}/${BUILD_NUMBER} --recursive --exclude "*" --include "*.*" --acl public-read"""
             step([$class: 'WsCleanup'])
             }       
         }            
