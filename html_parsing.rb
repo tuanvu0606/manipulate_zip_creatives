@@ -37,7 +37,7 @@ style.each do |style|
 	style.content = ""
 end
 
-f = File.new('style0.css', 'w')
+f = File.new('result_style.css', 'w')
 f.write(combined_style.to_s)
 f.close   
 
