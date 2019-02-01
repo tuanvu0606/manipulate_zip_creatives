@@ -49,7 +49,7 @@ pipeline {
                 sh "rm -rf ${workspace}/creative/*.*"
                 sh "cp /home/jenkins/uploaded_creatives/* ${workspace}/creative/creative.zip"
                 sh "chown -R jenkins ${workspace}/creative/creative.zip" 
-                sh "cd ${workspace}/creative"
+                sh "cd ${workspace}/creative/"
                 sh "pwd"
                 sh "ls -la"
                 sh "unzip -o ${workspace}/creative/creative.zip"
