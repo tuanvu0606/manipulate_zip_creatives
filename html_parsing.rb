@@ -94,7 +94,7 @@ script = page.css('script')
 image = page.css('gwd-image')
 
 link.each do |link|
-	link["src"]="https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose/" + CAMPAIGN.to_s + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + VERSION + "/" + link["src"].to_s
+	link["href"]="https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose/" + CAMPAIGN.to_s + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + VERSION + "/" + link["href"].to_s
 end
 
 script.each do |script|
