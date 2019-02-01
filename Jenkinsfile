@@ -69,7 +69,7 @@ pipeline {
                 sh "mv ${workspace}/function*.js ${workspace}/creative/"
                 sh "mv ${workspace}/style0.css ${workspace}/creative/"
                 sh "mv ${workspace}/after_processed.html ${workspace}/creative/index.html"
-                sh "mv ${workspace}/*.png ${workspace}/creative/"                
+                sh "mv ${workspace}/*.png ${workspace}/creative/"                        
             }
         }
         

@@ -18,7 +18,7 @@ combined_style = ""
 
 combined_script = ""
 
-PAGE_URL = "/var/lib/jenkins/workspace/manipulate_zip_creatives/index.html"
+PAGE_URL = "/var/lib/jenkins/workspace/manipulate_zip_creatives_pipeline/index.html"
 
 #PAGE_URL = "/home/ec2-user/manipulate_zip_creatives/creative/index.html"
 
