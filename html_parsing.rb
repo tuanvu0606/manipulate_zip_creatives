@@ -20,6 +20,8 @@ combined_script = ""
 
 PAGE_URL = "/var/lib/jenkins/workspace/manipulate_zip_creatives/index.html"
 
+#PAGE_URL = "/home/ec2-user/manipulate_zip_creatives/creative/index.html"
+
 #IMG_URL = "https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg"
 
 #get the page, parse it
@@ -35,7 +37,9 @@ style.each do |style|
 	style.content = ""
 end
 
-f = File.new('result_style.css', 'w')
+puts combined_style
+
+f = File.new('style0.css', 'w')
 f.write(combined_style.to_s)
 f.close   
 
