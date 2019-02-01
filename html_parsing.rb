@@ -31,7 +31,7 @@ puts PAGE_URL
 style = page.css('style')
 
 style.each do |style|
-	combined_style = combined_style.to_s + style.text.to_s
+	combined_style = combined_style.to_s + " " + style.text.to_s
 	style.content = ""
 end
 
