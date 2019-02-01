@@ -66,7 +66,7 @@ pipeline {
 
         stage ('copy to creative folder, prepare to push') {
             steps {                
-                sh "mv ${workspace}/fucntion*.js ${workspace}/creative/"
+                sh "mv ${workspace}/function*.js ${workspace}/creative/"
                 sh "mv ${workspace}/style*.css ${workspace}/creative/"
                 sh "mv ${workspace}/after_processed.html ${workspace}/creative/index.html"
                 sh "mv ${workspace}/*.png ${workspace}/creative/"                

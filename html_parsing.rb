@@ -78,7 +78,13 @@ end
 # puts tracking_script
 fi.close
 
-script.last.add_next_sibling "<script>" + tracking_script + "</script>"
+#add the tracking script in
+V4_tracking_script = Nokogiri::XML::Node.new "script", page
+V4_tracking_script["id"] = "tracking_script"
+V4_tracking_script.content = tracking_script
+script.last.add_next_sibling(V4_tracking_script)
+
+# script.last.add_next_sibling "<script>" + tracking_script + "</script>"
 
 #Replace the element id with the one in tracking script
 element = page.css('#creativelink')
@@ -96,6 +102,10 @@ end
 script.each do |script|
 	script["src"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/" + CAMPAIGN + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + script["src"].to_s
 end
+
+V4_tracking_script_proccesed = page.css('script#tracking_script')[0]
+
+V4_tracking_script_proccesed.delete("src")
 
 image.each do |image|
 	image["source"]="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/" + CAMPAIGN + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + image["source"].to_s
