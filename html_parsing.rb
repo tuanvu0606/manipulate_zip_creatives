@@ -101,6 +101,9 @@ script.each do |script|
 	script["src"]="https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose/" + CAMPAIGN + "/" + CAMPAIGN + "-" + WIDTH + "x" + HEIGHT + "/" + VERSION + "/" + script["src"].to_s
 end
 
+#remove function 8 script URL
+script[-2]["src"] = ""
+
 V4_tracking_script_proccesed = page.css('script#tracking_script')[0]
 
 V4_tracking_script_proccesed.delete("src")
