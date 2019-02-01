@@ -102,7 +102,7 @@ script.each do |script|
 end
 
 #remove function 8 script URL
-script[-2]["src"] = ""
+script[-2].remove
 
 V4_tracking_script_proccesed = page.css('script#tracking_script')[0]
 
