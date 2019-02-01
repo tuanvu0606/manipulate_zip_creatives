@@ -76,10 +76,10 @@ pipeline {
     }
         post {
         always {
-            archiveArtifacts artifacts: '${workspace}/creative/*.html', onlyIfSuccessful: true
-            archiveArtifacts artifacts: '${workspace}/creative/*.css', onlyIfSuccessful: true
-            archiveArtifacts artifacts: '${workspace}/creative/*.js', onlyIfSuccessful: true
-            archiveArtifacts artifacts: '${workspace}/creative/*.png', onlyIfSuccessful: true            
+            archiveArtifacts artifacts: 'creative/*.html', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'creative/*.css', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'creative/*.js', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'creative/*.png', onlyIfSuccessful: true            
         }
         success {            
             sh "echo /var/lib/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive"
