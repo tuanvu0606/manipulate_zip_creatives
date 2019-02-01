@@ -43,7 +43,7 @@ f.close
 
 css_link = Nokogiri::XML::Node.new "link", page
 css_link["rel"] = "stylesheet"
-css_link["src"] = "style0.css"
+css_link["href"] = "style0.css"
 style.last.add_next_sibling(css_link)
 
 #Change Javascript file
