@@ -13,7 +13,7 @@ def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 pipeline {
     agent any 
     parameters {
-        choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha', 'Twix-Nigra'], description: 'input campaign name')
+        choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha', 'Twix-Nigra', 'Happy Feet'], description: 'input campaign name')
 
         choice(name: 'WIDTH', choices: ['300', '320', '480', '728'], description: 'input campaign name')
 
